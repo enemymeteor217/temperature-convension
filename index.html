@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+<style>
+ body{
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: hsl(0, 0%, 95%);
+ }
+
+ h1{
+  color:hsl(240, 97%, 66%)
+ }
+
+form{
+  background-color: white;
+  text-align: center;
+  max-width: 350px;
+  margin: auto;
+  padding:25px 0;
+  border-radius: 10px;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.274);
+}
+
+#textbox{
+  width:50%;
+  text-align: center;
+  font-size: 2em;
+  border:1px solid black;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+label{
+  font-size: 1.2rem;
+  font-weight: bold;
+  
+}
+
+button{
+  margin-top:15px;
+  font-size: 1.2rem;
+  background-color: cyan;
+  border: 1px solid black;
+  cursor:pointer
+}
+
+button:hover{
+  background-color: hsl(180, 100%, 47%);
+}
+
+
+p{
+  font-weight: bold;
+  font-size: 1.1rem;
+  
+}
+
+#tofar,#tocel{
+  cursor: pointer;
+}
+
+
+</style>
+</head>
+<body>
+
+<form>
+<h1>Temperature conversion</h1>
+<input type="number"value="0"id="textbox">
+<br>
+<input type="radio" id="tofar"name="x">
+<label for="tofar">Celsius to Farenheight</label><br>
+<input type="radio" id="tocel"name="x">
+<label for="tocel">Farenheight to Celsius</label><br>
+<button type="button" id="submit" onclick= convert()>Submit</button>
+<p id="unit">enter a unit</p>
+</form>
+
+
+<script>
+
+const textbox = document.getElementById('textbox')
+const tofar = document.getElementById('tofar')
+const tocel = document.getElementById('tocel')
+const unit = document.getElementById('unit')
+let temp
+
+function convert() {
+  if (tofar.checked) {
+    temp = Number(textbox.value);
+    temp = (9 / 5 * temp) + 32;
+    unit.textContent = temp + "°F";
+  }else if (tocel.checked) {
+    temp = Number(textbox.value);
+    temp = (temp - 32) * 5 / 9;
+    unit.textContent = temp + '°C';
+  }else{
+    unit.textContent = 'Please select a unit'
+  }
+}
+
+</script>
+</body>
+</html>
